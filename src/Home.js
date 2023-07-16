@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { BsArrowRight, BsCurrencyDollar } from 'react-icons/bs'
+import { BsArrowRight, BsCurrencyDollar, BsEye } from 'react-icons/bs'
 import { FiTruck } from 'react-icons/fi'
 import { TbShoppingCartDiscount } from 'react-icons/tb'
 import { BiHeadphone } from 'react-icons/bi'
+import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 import './Home.css'
 import HomeProduct from './HomeProduct'
 
@@ -68,7 +69,7 @@ return (
                     </div>
                     <div className="detail">
                         <h3>Free Shipping</h3>
-                        <p>Orders above Rs.1000 </p>
+                        <p>Orders above Rs.10,000 </p>
                     </div>
                 </div>
                 <div className="box">
@@ -102,6 +103,7 @@ return (
         </div>
 
         <div className="product">
+            <h2>Top Products</h2>
             <div className="container">
 
                 {
@@ -112,13 +114,38 @@ return (
                                     <div className="box" key={curElm.id}>
                                         <div className="img_box">
                                             <img src={curElm.Img} alt={curElm.Title}></img>
+                                            <div className="icon">
+                                                <li><AiOutlineShoppingCart /></li>
+                                                <li><BsEye /></li>
+                                                <li><AiOutlineHeart /></li>
+                                            </div>
+                                        </div>
+                                        <div className="detail">
+                                            <p>{curElm.Cat}</p>
+                                            <h3>{curElm.Title}</h3>
+                                            <h4>{curElm.Price}</h4>
                                         </div>
                                     </div>
+
                                 </>
                             )
                     })
                 }
 
+            </div>
+        </div>
+
+        <div className="banner">
+            <div className="container">
+                <div className="detail">
+                    <h4>Our Latest Product</h4>
+                    <h3>Apple iPad 10.2 9th Gen </h3>
+                    <p>Rs. 139,000</p>
+                    <Link to={'./product'} className='link'>Shop Now <BsArrowRight /> </Link>
+                </div>
+                <div className="img_box">
+                    <img src="./img/slider_img.png" alt="iPad" style={{width:'400px'}} />
+                </div>
             </div>
         </div>
     </>

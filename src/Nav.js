@@ -16,7 +16,7 @@ return (
                     <FaTruckMoving /> 
             </div>
             <p> 
-                Free Shipping for Orders upto Rs.1000 
+                Free Shipping for Orders upto Rs.10,000 
             </p>
         </div>
 
