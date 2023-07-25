@@ -53,7 +53,7 @@ const ProductDetail =
         id:8,
         Title:'Nikon DSLR',
         Price:'Rs. 95,999',
-        Cat:'Mobile',
+        Cat:'Camera',
         Img:'../img/nikondslr1.jpeg'
     },
 ]
