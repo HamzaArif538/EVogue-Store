@@ -31,11 +31,28 @@ const App = () => {
     setDetail([{...product}])
     setClose(true)
   }
+
+  // add to cart
+  
+  const addtocart = (product)=>{
+    const exsit = cart.find((x) => 
+    {
+      return x.id === product.id
+    })
+    if(exsit){
+      alert('This Product is already added to the Cart')
+    }
+    else{
+      setCart([...cart, {...product, qty:1}])
+      alert('Product is added to Cart')
+    }
+  }
+  console.log(cart)
   return (
     <>
     <BrowserRouter >
       <Nav searchBtn={searchBtn} />
-      <Rout product={product} setProduct={setProduct} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} />
+      <Rout product={product} setProduct={setProduct} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} addtocart={addtocart} />
       <Footer />
     </BrowserRouter>
     </>

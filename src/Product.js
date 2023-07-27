@@ -1,10 +1,13 @@
 import React from 'react'
 import { AiOutlineShoppingCart, AiOutlineHeart, AiOutlineCloseCircle } from 'react-icons/ai';
+import { useAuth0 } from "@auth0/auth0-react";
 import { BsEye } from 'react-icons/bs';
 // import { useAuth0 } from "@auth0/auth0-react";
 import Productdetail from './ProductDetail'
 import './Product.css'
 const Product = ({product, setProduct, detail, view, close, setClose, addtocart}) => {
+
+    const { loginWithRedirect, isAuthenticated  } = useAuth0();
 
     // const { loginWithRedirect,isAuthenticated} = useAuth0();
     const filterProduct = (product) =>
@@ -77,7 +80,12 @@ return (
                                                 <div className="img_box">
                                                     <img src={curElm.Img} alt={curElm.Title}></img>
                                                     <div className="icon">
-                                                        <li><AiOutlineShoppingCart /></li>
+                                                        {
+                                                            isAuthenticated ?
+                                                                <li onClick={() => addtocart (curElm)}><AiOutlineShoppingCart /></li>
+                                                                :
+                                                                <li onClick={() => loginWithRedirect}><AiOutlineShoppingCart /></li>
+                                                        }
                                                         <li onClick={() => view (curElm)}><BsEye /></li>
                                                         <li><AiOutlineHeart /></li>
                                                     </div>
@@ -85,7 +93,7 @@ return (
                                                 <div className="detail">
                                                     <p>{curElm.Cat}</p>
                                                     <h3>{curElm.Title}</h3>
-                                                    <h4>{curElm.Price}</h4>
+                                                    <h4>Rs. {curElm.Price}</h4>
                                                 </div>
                                             </div>
                                         </>
